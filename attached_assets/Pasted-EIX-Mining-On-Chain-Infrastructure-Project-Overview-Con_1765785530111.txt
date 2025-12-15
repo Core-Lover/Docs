@@ -1,0 +1,207 @@
+EIX Mining & On-Chain Infrastructure
+
+Project Overview & Contributor / Partner Hiring Document
+
+
+---
+
+1. Core System Description
+
+EIX is a mining-based blockchain ecosystem integrated with on-chain user verification and multi-chain no-code blockchain tools.
+The system is designed to generate sustainable, recurring revenue while supporting long-term liquidity, listings, and ecosystem growth.
+
+Revenue is generated through:
+
+On-chain user verification fees
+
+Token deployment and blockchain utility tools
+
+App-based mining, staking, and harvesting mechanisms
+
+
+A predefined percentage of all revenues is automatically reserved for liquidity, listings, and ecosystem sustainability.
+
+
+---
+
+2. On-Chain Verification Revenue Model
+
+Verification fee per user: 0.01 ETH (approximately USD 30)
+
+Each transaction covers blockchain and execution costs
+
+30% to 50% of the fee is automatically reserved by the platform
+
+
+Adoption Projection
+
+Target users: 100,000
+
+Total collected: 1,000 ETH (~USD 3,000,000)
+
+
+System Reserve from Verification
+
+30% reserve: ~USD 900,000
+
+50% reserve: ~USD 1,500,000
+
+
+These reserves are allocated to liquidity provisioning, exchange listings, team revenue sharing, and long-term ecosystem stability.
+
+
+---
+
+3. Multi-Chain Tools Revenue (3 Blockchains)
+
+The platform offers no-code blockchain tools, including:
+
+Token deployment
+
+Minting and configuration
+
+Smart contract utilities
+
+
+Conservative Monthly Estimate
+
+Average fee per use: USD 20
+
+Average usage: 50 users per day per tool
+
+Total monthly usage: ~4,500
+
+Gross monthly revenue: ~USD 90,000
+
+System reserve (approx. 40%): ~USD 36,000 per month
+
+
+
+---
+
+4. Total Monthly System Reserve (Estimated)
+
+Source	Monthly Reserve
+
+On-chain verification	~USD 120,000
+Blockchain tools	~USD 36,000
+Total System Reserve	~USD 156,000 / month
+
+
+
+---
+
+5. Revenue Distribution Model
+
+25% of monthly system reserve is distributed to active team members and contributors as revenue share
+
+75% of monthly system reserve is allocated to:
+
+Liquidity provisioning (DEX & CEX)
+
+Exchange listings and market making
+
+Buyback and emergency ecosystem funds
+
+
+
+Annual Liquidity & Growth Reserve
+
+Approximately USD 1.4 million per year
+
+
+---
+
+6. EIX Tokenomics
+
+Total Supply: 21,000,000 EIX
+
+App Mining: 25% (5,250,000)
+
+Staking & Harvesting: 40% (8,400,000)
+
+Listing & Liquidity: 20% (4,200,000)
+
+Partnerships & Promotion: 5% (1,050,000)
+
+Team & Contributors: 10% (2,100,000)
+(No vesting; internal sell and role-based rules apply)
+
+
+
+---
+
+7. Team Hiring – Contributors / Partners
+
+We are onboarding four (4) core contributors to join the project as long-term partners, not salaried employees.
+
+Open Roles
+
+1. Executive – Real-World Events & Marketing
+
+
+2. Designer – UI, Branding, and Visual Assets
+
+
+3. Social Media Manager – X, Telegram, Discord
+
+
+4. Accountant – Funding, Treasury, and Financial Management
+
+
+
+
+---
+
+8. What Contributors Receive
+
+Revenue share from monthly system income
+
+EIX token allocation from the team pool
+
+Long-term partnership position
+
+No fixed salary (performance and revenue based rewards)
+
+
+
+---
+
+9. Eligibility & Application Requirements
+
+Applicants must qualify through at least one of the following:
+
+Option A: Skill Contribution
+
+Proven experience in the applied role
+
+Clear weekly KPIs
+
+Minimum 3-month active commitment
+
+
+Option B: Financial Contribution
+
+Capital contribution (recommended USD 1,000–5,000)
+
+Funds used for liquidity, operations, or listings
+
+Additional revenue and token share benefits
+
+
+Mandatory for All Contributors
+
+Agreement to revenue-based compensation
+
+Transparency and accountability
+
+Alignment with the long-term project vision
+
+
+
+---
+
+10. Closing Statement
+
+EIX is built as a self-funded, revenue-generating, and contributor-driven blockchain ecosystem.
+We invite skilled professionals and aligned partners to apply and become part of the EIX infrastructure.
