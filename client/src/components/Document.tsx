@@ -2,6 +2,7 @@ import React from 'react';
 import { Separator } from '@/components/ui/separator';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { SalaryCalculator } from './SalaryCalculator';
 import { 
   Network, 
   Cpu, 
@@ -206,6 +207,9 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
         </div>
         <p className="text-center text-sm text-gray-400 mt-4 font-mono">Total Supply: 21,000,000 EIX</p>
       </section>
+
+      {/* Salary Calculator */}
+      <SalaryCalculator />
 
       {/* 7, 8, 9. Team & Hiring */}
       <section className="mb-12 relative z-10">
