@@ -1,6 +1,10 @@
 import { useRef } from 'react';
 import { Document } from '@/components/Document';
 import { DownloadButton } from '@/components/DownloadButton';
+import { MarketComparison } from '@/components/MarketComparison';
+import { SalaryCalculator } from '@/components/SalaryCalculator';
+import { FAQSection } from '@/components/FAQSection';
+import { ContributorAgreement } from '@/components/ContributorAgreement';
 
 export default function Home() {
   const documentRef = useRef<HTMLDivElement>(null);
@@ -18,6 +22,21 @@ export default function Home() {
         
         {/* The Printable Document */}
         <Document ref={documentRef} />
+        
+        {/* Additional Sections - Full Width Container */}
+        <div className="w-full max-w-4xl mt-8">
+          {/* Market Comparison - Why EIX is Better */}
+          <MarketComparison />
+          
+          {/* Earnings Calculator with Consent Gate */}
+          <SalaryCalculator />
+          
+          {/* FAQ Section */}
+          <FAQSection />
+          
+          {/* Contributor Agreement Form */}
+          <ContributorAgreement />
+        </div>
       </div>
     </div>
   );
