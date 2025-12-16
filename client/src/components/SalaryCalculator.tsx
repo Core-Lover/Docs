@@ -3,136 +3,211 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 export const SalaryCalculator = () => {
-  const [userContribution, setUserContribution] = useState<number>(100);
+  const [userContribution, setUserContribution] = useState<number>(1000);
 
-  // System metrics
-  const monthlyRevenue = 156000;
-  const distributionPercent = 25;
-  const liquidityPercent = 75;
-
-  // Calculations
-  const monthlyDistribution = (monthlyRevenue * distributionPercent) / 100;
+  // System constraints
+  const MIN_CONTRIBUTION = 100;
+  const MAX_CONTRIBUTION = 500000;
   
-  // Assuming equal distribution among contributors (based on their share)
-  // If user contributes, they get a proportional share of the distribution pool
-  const userMonthlyReturn = (userContribution / 100) * (monthlyDistribution / 156); // Simplified ratio
-  const userAnnualReturn = userMonthlyReturn * 12;
-  const monthlyROI = userContribution > 0 ? (userMonthlyReturn / userContribution) * 100 : 0;
-  const annualROI = monthlyROI * 12;
+  // Revenue phases
+  const initialPhaseMonths = 3;
+  const initialMonthlyRevenue = 156000; // First 3 months
+  const matureMonthlyRevenue = 500000; // After 3 months (projected)
+
+  // Distribution model
+  const teamDistributionPercent = 25; // 25% to team members
+  const aiqxHolderPercent = 20; // 20% to AIQX token holders
+  const liquidityPercent = 55; // 55% for liquidity and growth
+
+  // Validate and constrain input
+  const validContribution = Math.max(MIN_CONTRIBUTION, Math.min(MAX_CONTRIBUTION, userContribution));
+
+  // INITIAL PHASE CALCULATIONS (First 3 months)
+  const initialTeamPool = (initialMonthlyRevenue * teamDistributionPercent) / 100;
+  const initialAiqxPool = (initialMonthlyRevenue * aiqxHolderPercent) / 100;
+  
+  // Assuming equal distribution among all contributors in initial phase
+  const initialMonthlyEarning = (validContribution / 100) * (initialTeamPool / 1560); // Normalized
+  const initialPhaseTotal = initialMonthlyEarning * initialPhaseMonths;
+
+  // MATURE PHASE CALCULATIONS (After system is stable)
+  const matureTeamPool = (matureMonthlyRevenue * teamDistributionPercent) / 100;
+  const matureAiqxPool = (matureMonthlyRevenue * aiqxHolderPercent) / 100;
+  
+  const matureMonthlyEarning = (validContribution / 100) * (matureTeamPool / 5000); // Normalized for mature phase
+  const matureAnnualEarning = matureMonthlyEarning * 12;
+  
+  const initialMonthlyROI = validContribution > 0 ? (initialMonthlyEarning / validContribution) * 100 : 0;
+  const matureMonthlyROI = validContribution > 0 ? (matureMonthlyEarning / validContribution) * 100 : 0;
+  const matureAnnualROI = matureMonthlyROI * 12;
+
+  const quickButtonClick = (amount: number) => {
+    setUserContribution(Math.min(amount, MAX_CONTRIBUTION));
+  };
 
   return (
     <div className="bg-slate-900 border border-slate-700 rounded-lg p-8 mb-12 relative z-10">
-      <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
-        <div className="w-1 h-6 bg-orange-500 rounded-full"></div>
-        <span>How Much Will You Earn?</span>
+      {/* Header */}
+      <h3 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
+        <div className="w-1 h-8 bg-gradient-to-b from-orange-400 to-orange-600 rounded-full"></div>
+        <span>Investment Calculator</span>
       </h3>
-      <p className="text-gray-400 text-sm mb-8">
-        See exactly how much you'll receive based on your contribution to the EthicX system
+      <p className="text-gray-400 text-sm mb-6">
+        See exactly how much you'll earn based on your contribution to EthicX
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Input Section */}
-        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-          <Label className="text-gray-300 mb-3 block text-sm font-semibold uppercase tracking-wide">
-            Your Contribution ($)
+      {/* Input Section */}
+      <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
+        <div className="mb-6">
+          <Label className="text-gray-300 mb-2 block text-sm font-semibold uppercase tracking-wide">
+            Your Contribution Amount (${MIN_CONTRIBUTION} - ${MAX_CONTRIBUTION.toLocaleString()})
           </Label>
+          <Input
+            type="number"
+            value={userContribution}
+            onChange={(e) => setUserContribution(Number(e.target.value))}
+            min={MIN_CONTRIBUTION}
+            max={MAX_CONTRIBUTION}
+            className="bg-slate-700 border-slate-600 text-white text-lg font-bold mb-3"
+            placeholder="Enter contribution amount"
+            data-testid="input-contribution"
+          />
+          <p className="text-xs text-orange-400 font-semibold">
+            {userContribution < MIN_CONTRIBUTION && `Minimum: $${MIN_CONTRIBUTION}`}
+            {userContribution > MAX_CONTRIBUTION && `Maximum: $${MAX_CONTRIBUTION.toLocaleString()}`}
+            {userContribution >= MIN_CONTRIBUTION && userContribution <= MAX_CONTRIBUTION && `✓ Valid contribution amount`}
+          </p>
+        </div>
+
+        {/* Quick Select Buttons */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {[100, 1000, 5000, 10000].map((amount) => (
+            <button
+              key={amount}
+              onClick={() => quickButtonClick(amount)}
+              className={`px-3 py-2 rounded text-sm font-semibold transition ${
+                validContribution === amount
+                  ? 'bg-orange-500 text-white'
+                  : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
+              }`}
+              data-testid={`btn-${amount}`}
+            >
+              ${amount.toLocaleString()}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Two Phase Comparison */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {/* INITIAL PHASE */}
+        <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 border border-blue-500/30 rounded-lg p-6">
           <div className="mb-4">
-            <Input
-              type="number"
-              value={userContribution}
-              onChange={(e) => setUserContribution(Math.max(0, Number(e.target.value)))}
-              className="bg-slate-700 border-slate-600 text-white text-lg font-bold"
-              placeholder="Enter amount"
-              data-testid="input-contribution"
-            />
+            <p className="text-blue-400 text-xs uppercase font-bold tracking-wide mb-1">Phase 1: Initial Launch</p>
+            <p className="text-white text-2xl font-bold mb-2">First 3 Months</p>
+            <p className="text-gray-300 text-sm">System building phase with $156K/month revenue</p>
           </div>
-          
-          <div className="space-y-3 text-sm">
-            <div className="flex justify-between items-center py-2 border-b border-slate-700">
-              <span className="text-gray-400">Example amounts:</span>
+
+          <div className="space-y-3 mt-4 pt-4 border-t border-blue-500/20">
+            <div className="bg-slate-900/50 rounded p-3">
+              <p className="text-gray-400 text-xs mb-1">Your Monthly Earning</p>
+              <p className="text-xl font-bold text-blue-300" data-testid="result-initial-monthly">
+                ${initialMonthlyEarning.toLocaleString('en-US', { maximumFractionDigits: 2 })}
+              </p>
             </div>
-            <button
-              onClick={() => setUserContribution(100)}
-              className={`w-full text-left px-3 py-2 rounded transition ${userContribution === 100 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'hover:bg-slate-700 text-gray-300'}`}
-              data-testid="btn-100"
-            >
-              $100
-            </button>
-            <button
-              onClick={() => setUserContribution(500)}
-              className={`w-full text-left px-3 py-2 rounded transition ${userContribution === 500 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'hover:bg-slate-700 text-gray-300'}`}
-              data-testid="btn-500"
-            >
-              $500
-            </button>
-            <button
-              onClick={() => setUserContribution(1000)}
-              className={`w-full text-left px-3 py-2 rounded transition ${userContribution === 1000 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'hover:bg-slate-700 text-gray-300'}`}
-              data-testid="btn-1000"
-            >
-              $1,000
-            </button>
-            <button
-              onClick={() => setUserContribution(5000)}
-              className={`w-full text-left px-3 py-2 rounded transition ${userContribution === 5000 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'hover:bg-slate-700 text-gray-300'}`}
-              data-testid="btn-5000"
-            >
-              $5,000
-            </button>
+
+            <div className="bg-slate-900/50 rounded p-3">
+              <p className="text-gray-400 text-xs mb-1">Total for 3 Months</p>
+              <p className="text-xl font-bold text-blue-300" data-testid="result-initial-total">
+                ${initialPhaseTotal.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+              </p>
+            </div>
+
+            <div className="bg-slate-900/50 rounded p-3">
+              <p className="text-gray-400 text-xs mb-1">Monthly ROI</p>
+              <p className="text-xl font-bold text-blue-300" data-testid="result-initial-roi">
+                {initialMonthlyROI.toFixed(2)}%
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Results Section */}
-        <div className="lg:col-span-2 space-y-4">
-          <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/10 border border-orange-500/30 rounded-lg p-6">
-            <p className="text-gray-300 text-sm font-semibold mb-1">Your Monthly Earnings</p>
-            <p className="text-4xl font-bold text-orange-400" data-testid="result-monthly">
-              ${userMonthlyReturn.toLocaleString('en-US', { maximumFractionDigits: 2 })}
-            </p>
-            <p className="text-xs text-gray-400 mt-2">From your ${userContribution.toLocaleString()} contribution</p>
+        {/* MATURE PHASE */}
+        <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/10 border border-orange-500/30 rounded-lg p-6">
+          <div className="mb-4">
+            <p className="text-orange-400 text-xs uppercase font-bold tracking-wide mb-1">Phase 2: Growth & Maturity</p>
+            <p className="text-white text-2xl font-bold mb-2">Month 4 Onwards</p>
+            <p className="text-gray-300 text-sm">Mature system with projected $500K/month revenue</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-              <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Annual Earnings</p>
-              <p className="text-2xl font-bold text-blue-400" data-testid="result-annual">
-                ${userAnnualReturn.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+          <div className="space-y-3 mt-4 pt-4 border-t border-orange-500/20">
+            <div className="bg-slate-900/50 rounded p-3">
+              <p className="text-gray-400 text-xs mb-1">Your Monthly Earning</p>
+              <p className="text-xl font-bold text-orange-300" data-testid="result-mature-monthly">
+                ${matureMonthlyEarning.toLocaleString('en-US', { maximumFractionDigits: 2 })}
               </p>
-              <p className="text-xs text-gray-500 mt-1">12 months projected</p>
             </div>
 
-            <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-              <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Monthly Return %</p>
-              <p className="text-2xl font-bold text-green-400" data-testid="result-monthly-roi">
-                {monthlyROI.toFixed(2)}%
+            <div className="bg-slate-900/50 rounded p-3">
+              <p className="text-gray-400 text-xs mb-1">Annual Earning (12 months)</p>
+              <p className="text-xl font-bold text-orange-300" data-testid="result-mature-annual">
+                ${matureAnnualEarning.toLocaleString('en-US', { maximumFractionDigits: 0 })}
               </p>
-              <p className="text-xs text-gray-500 mt-1">on your investment</p>
             </div>
 
-            <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-              <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Annual Return %</p>
-              <p className="text-2xl font-bold text-purple-400" data-testid="result-annual-roi">
-                {annualROI.toFixed(2)}%
+            <div className="bg-slate-900/50 rounded p-3">
+              <p className="text-gray-400 text-xs mb-1">Monthly ROI</p>
+              <p className="text-xl font-bold text-orange-300" data-testid="result-mature-roi">
+                {matureMonthlyROI.toFixed(2)}%
               </p>
-              <p className="text-xs text-gray-500 mt-1">yearly ROI</p>
-            </div>
-
-            <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-              <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Payback Period</p>
-              <p className="text-2xl font-bold text-indigo-400" data-testid="result-payback">
-                {userMonthlyReturn > 0 ? Math.ceil(userContribution / userMonthlyReturn) : '-'} mo
-              </p>
-              <p className="text-xs text-gray-500 mt-1">to recover investment</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Simple Explanation */}
-      <div className="mt-8 pt-6 border-t border-slate-700 bg-slate-800/50 rounded-lg p-4">
-        <p className="text-gray-300 text-sm leading-relaxed">
-          <span className="font-semibold text-orange-400">💡 How it works:</span> You contribute <span className="font-bold text-orange-400">${userContribution.toLocaleString()}</span> to the EthicX system. Each month, you receive <span className="font-bold text-green-400">${userMonthlyReturn.toLocaleString('en-US', { maximumFractionDigits: 2 })}</span> from our revenue distribution. That's a <span className="font-bold text-blue-400">{monthlyROI.toFixed(2)}% monthly return</span>, meaning your investment would be fully recovered in approximately <span className="font-bold text-indigo-400">{userMonthlyReturn > 0 ? Math.ceil(userContribution / userMonthlyReturn) : '∞'} months</span>.
+      {/* Revenue Distribution Breakdown */}
+      <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 mb-8">
+        <p className="text-white font-bold mb-4 flex items-center gap-2">
+          <span className="text-orange-400">📊</span> How Revenue is Distributed
         </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-slate-900 rounded p-4">
+            <p className="text-green-400 text-2xl font-bold mb-1">25%</p>
+            <p className="text-gray-400 text-sm">Distributed to Contributors</p>
+            <p className="text-xs text-gray-500 mt-2">You receive from this pool</p>
+          </div>
+          <div className="bg-slate-900 rounded p-4">
+            <p className="text-orange-400 text-2xl font-bold mb-1">20%</p>
+            <p className="text-gray-400 text-sm">AIQX Token Holders Fund</p>
+            <p className="text-xs text-gray-500 mt-2">Separate fund for AIQX holders</p>
+          </div>
+          <div className="bg-slate-900 rounded p-4">
+            <p className="text-blue-400 text-2xl font-bold mb-1">55%</p>
+            <p className="text-gray-400 text-sm">Liquidity & Growth</p>
+            <p className="text-xs text-gray-500 mt-2">For listings and expansion</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Simple Explanation */}
+      <div className="bg-orange-500/10 border border-orange-500/30 rounded-lg p-6">
+        <p className="text-gray-300 text-sm leading-relaxed mb-4">
+          <span className="font-bold text-orange-400">How This Works:</span>
+        </p>
+        <ul className="text-gray-300 text-sm space-y-2 ml-4">
+          <li className="list-disc">
+            <span className="font-semibold">Months 1-3 (Initial Phase):</span> You'll earn <span className="text-blue-300 font-bold">${initialMonthlyEarning.toLocaleString('en-US', { maximumFractionDigits: 2 })}/month</span> as the system launches with lower initial revenue of $156K/month.
+          </li>
+          <li className="list-disc">
+            <span className="font-semibold">Month 4+ (Mature Phase):</span> Once the system is fully operational, earnings increase to <span className="text-orange-300 font-bold">${matureMonthlyEarning.toLocaleString('en-US', { maximumFractionDigits: 2 })}/month</span> based on projected $500K/month revenue.
+          </li>
+          <li className="list-disc">
+            <span className="font-semibold">Your Investment Recovery:</span> With your ${validContribution.toLocaleString()} contribution, you'll recover your investment in the mature phase within approximately <span className="text-indigo-300 font-bold">{Math.ceil(validContribution / matureMonthlyEarning)} months</span>.
+          </li>
+          <li className="list-disc">
+            <span className="font-semibold">AIQX Holders:</span> A separate <span className="text-orange-300 font-bold">20% fund</span> goes to AIQX token holders, ensuring ecosystem growth.
+          </li>
+        </ul>
       </div>
     </div>
   );
