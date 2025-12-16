@@ -24,11 +24,13 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
         <div className="flex justify-between items-start">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <img 
-                src={ethicxLogo}
-                alt="EthicX Logo"
-                className="h-12 w-12 object-contain"
-              />
+              <div className="h-14 w-14 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center shadow-md border-2 border-blue-700">
+                <img 
+                  src={ethicxLogo}
+                  alt="EthicX Logo"
+                  className="h-10 w-10 object-contain"
+                />
+              </div>
               <h1 className="text-4xl font-bold tracking-tight text-gray-900">EthicX</h1>
             </div>
             <h2 className="text-xl text-gray-600 font-light tracking-wide">Mining & On-Chain Infrastructure</h2>

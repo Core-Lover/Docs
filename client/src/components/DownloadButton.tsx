@@ -34,10 +34,10 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ targetRef }) => 
 
       // Render the element to canvas
       const canvas = await html2canvas(element, {
-        scale: 2,
+        scale: 1,
         useCORS: true,
         backgroundColor: '#ffffff',
-        windowWidth: 1000,
+        windowWidth: element.offsetWidth,
         windowHeight: element.scrollHeight,
       });
 
