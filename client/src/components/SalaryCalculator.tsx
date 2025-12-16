@@ -1,155 +1,137 @@
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
 export const SalaryCalculator = () => {
-  const [monthlyIncome, setMonthlyIncome] = useState<number>(156000);
-  const [distributionPercent, setDistributionPercent] = useState<number>(25);
-  const [teamMembers, setTeamMembers] = useState<number>(1);
-  const [contributedAmount, setContributedAmount] = useState<number>(0);
+  const [userContribution, setUserContribution] = useState<number>(100);
+
+  // System metrics
+  const monthlyRevenue = 156000;
+  const distributionPercent = 25;
+  const liquidityPercent = 75;
 
   // Calculations
-  const totalToDistribute = (monthlyIncome * distributionPercent) / 100;
-  const salaryPerMember = teamMembers > 0 ? totalToDistribute / teamMembers : 0;
+  const monthlyDistribution = (monthlyRevenue * distributionPercent) / 100;
   
-  // Additional metrics
-  const systemReserve = monthlyIncome - totalToDistribute;
-  const annualSalaryPerMember = salaryPerMember * 12;
-  const investmentReturn = contributedAmount > 0 ? (totalToDistribute / contributedAmount) * 100 : 0;
+  // Assuming equal distribution among contributors (based on their share)
+  // If user contributes, they get a proportional share of the distribution pool
+  const userMonthlyReturn = (userContribution / 100) * (monthlyDistribution / 156); // Simplified ratio
+  const userAnnualReturn = userMonthlyReturn * 12;
+  const monthlyROI = userContribution > 0 ? (userMonthlyReturn / userContribution) * 100 : 0;
+  const annualROI = monthlyROI * 12;
 
   return (
     <div className="bg-slate-900 border border-slate-700 rounded-lg p-8 mb-12 relative z-10">
-      <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+      <h3 className="text-2xl font-bold text-white mb-2 flex items-center gap-3">
         <div className="w-1 h-6 bg-orange-500 rounded-full"></div>
-        <span>Salary & Revenue Calculator</span>
+        <span>How Much Will You Earn?</span>
       </h3>
+      <p className="text-gray-400 text-sm mb-8">
+        See exactly how much you'll receive based on your contribution to the EthicX system
+      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Input Section */}
-        <div className="space-y-6">
-          <h4 className="text-lg font-semibold text-white">Input Parameters</h4>
+        <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
+          <Label className="text-gray-300 mb-3 block text-sm font-semibold uppercase tracking-wide">
+            Your Contribution ($)
+          </Label>
+          <div className="mb-4">
+            <Input
+              type="number"
+              value={userContribution}
+              onChange={(e) => setUserContribution(Math.max(0, Number(e.target.value)))}
+              className="bg-slate-700 border-slate-600 text-white text-lg font-bold"
+              placeholder="Enter amount"
+              data-testid="input-contribution"
+            />
+          </div>
           
-          <div>
-            <Label className="text-gray-300 mb-2 block text-sm font-medium">
-              Monthly System Revenue ($)
-            </Label>
-            <Input
-              type="number"
-              value={monthlyIncome}
-              onChange={(e) => setMonthlyIncome(Number(e.target.value))}
-              className="bg-slate-800 border-slate-600 text-white"
-              data-testid="input-monthly-income"
-            />
-            <p className="text-xs text-gray-400 mt-1">Current: ${monthlyIncome.toLocaleString()}</p>
-          </div>
-
-          <div>
-            <Label className="text-gray-300 mb-2 block text-sm font-medium">
-              Distribution to Team (%)
-            </Label>
-            <Input
-              type="number"
-              value={distributionPercent}
-              onChange={(e) => setDistributionPercent(Number(e.target.value))}
-              max="100"
-              min="0"
-              className="bg-slate-800 border-slate-600 text-white"
-              data-testid="input-distribution-percent"
-            />
-            <p className="text-xs text-gray-400 mt-1">Current: {distributionPercent}% of revenue</p>
-          </div>
-
-          <div>
-            <Label className="text-gray-300 mb-2 block text-sm font-medium">
-              Total Team Members
-            </Label>
-            <Input
-              type="number"
-              value={teamMembers}
-              onChange={(e) => setTeamMembers(Number(e.target.value))}
-              min="1"
-              className="bg-slate-800 border-slate-600 text-white"
-              data-testid="input-team-members"
-            />
-            <p className="text-xs text-gray-400 mt-1">Current: {teamMembers} members</p>
-          </div>
-
-          <div>
-            <Label className="text-gray-300 mb-2 block text-sm font-medium">
-              Total Contributed Capital ($)
-            </Label>
-            <Input
-              type="number"
-              value={contributedAmount}
-              onChange={(e) => setContributedAmount(Number(e.target.value))}
-              className="bg-slate-800 border-slate-600 text-white"
-              data-testid="input-contributed-amount"
-            />
-            <p className="text-xs text-gray-400 mt-1">Optional: For ROI calculation</p>
+          <div className="space-y-3 text-sm">
+            <div className="flex justify-between items-center py-2 border-b border-slate-700">
+              <span className="text-gray-400">Example amounts:</span>
+            </div>
+            <button
+              onClick={() => setUserContribution(100)}
+              className={`w-full text-left px-3 py-2 rounded transition ${userContribution === 100 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'hover:bg-slate-700 text-gray-300'}`}
+              data-testid="btn-100"
+            >
+              $100
+            </button>
+            <button
+              onClick={() => setUserContribution(500)}
+              className={`w-full text-left px-3 py-2 rounded transition ${userContribution === 500 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'hover:bg-slate-700 text-gray-300'}`}
+              data-testid="btn-500"
+            >
+              $500
+            </button>
+            <button
+              onClick={() => setUserContribution(1000)}
+              className={`w-full text-left px-3 py-2 rounded transition ${userContribution === 1000 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'hover:bg-slate-700 text-gray-300'}`}
+              data-testid="btn-1000"
+            >
+              $1,000
+            </button>
+            <button
+              onClick={() => setUserContribution(5000)}
+              className={`w-full text-left px-3 py-2 rounded transition ${userContribution === 5000 ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' : 'hover:bg-slate-700 text-gray-300'}`}
+              data-testid="btn-5000"
+            >
+              $5,000
+            </button>
           </div>
         </div>
 
         {/* Results Section */}
-        <div className="space-y-4">
-          <h4 className="text-lg font-semibold text-white mb-4">Calculated Results</h4>
-
-          <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <p className="text-gray-300 text-sm">Monthly Distribution Pool</p>
-            <p className="text-2xl font-bold text-orange-400" data-testid="result-total-distribute">
-              ${totalToDistribute.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+        <div className="lg:col-span-2 space-y-4">
+          <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/10 border border-orange-500/30 rounded-lg p-6">
+            <p className="text-gray-300 text-sm font-semibold mb-1">Your Monthly Earnings</p>
+            <p className="text-4xl font-bold text-orange-400" data-testid="result-monthly">
+              ${userMonthlyReturn.toLocaleString('en-US', { maximumFractionDigits: 2 })}
             </p>
-            <p className="text-xs text-gray-400 mt-1">{distributionPercent}% of ${monthlyIncome.toLocaleString()}</p>
+            <p className="text-xs text-gray-400 mt-2">From your ${userContribution.toLocaleString()} contribution</p>
           </div>
 
-          <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <p className="text-gray-300 text-sm">Salary Per Team Member (Monthly)</p>
-            <p className="text-2xl font-bold text-green-400" data-testid="result-salary-per-member">
-              ${salaryPerMember.toLocaleString('en-US', { maximumFractionDigits: 0 })}
-            </p>
-            <p className="text-xs text-gray-400 mt-1">÷ {teamMembers} members</p>
-          </div>
-
-          <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <p className="text-gray-300 text-sm">Annual Salary Per Member</p>
-            <p className="text-2xl font-bold text-blue-400" data-testid="result-annual-salary">
-              ${annualSalaryPerMember.toLocaleString('en-US', { maximumFractionDigits: 0 })}
-            </p>
-            <p className="text-xs text-gray-400 mt-1">12-month projected</p>
-          </div>
-
-          <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
-            <p className="text-gray-300 text-sm">Monthly System Reserve</p>
-            <p className="text-2xl font-bold text-purple-400" data-testid="result-system-reserve">
-              ${systemReserve.toLocaleString('en-US', { maximumFractionDigits: 0 })}
-            </p>
-            <p className="text-xs text-gray-400 mt-1">{100 - distributionPercent}% for liquidity & growth</p>
-          </div>
-
-          {contributedAmount > 0 && (
-            <div className="bg-slate-800 rounded-lg p-4 border border-orange-500/30 bg-orange-500/10">
-              <p className="text-gray-300 text-sm">Monthly ROI on Contributed Capital</p>
-              <p className="text-2xl font-bold text-orange-300" data-testid="result-roi">
-                {investmentReturn.toFixed(2)}%
+          <div className="grid grid-cols-2 gap-4">
+            <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
+              <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Annual Earnings</p>
+              <p className="text-2xl font-bold text-blue-400" data-testid="result-annual">
+                ${userAnnualReturn.toLocaleString('en-US', { maximumFractionDigits: 0 })}
               </p>
-              <p className="text-xs text-gray-400 mt-1">Based on ${contributedAmount.toLocaleString()} contribution</p>
+              <p className="text-xs text-gray-500 mt-1">12 months projected</p>
             </div>
-          )}
+
+            <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
+              <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Monthly Return %</p>
+              <p className="text-2xl font-bold text-green-400" data-testid="result-monthly-roi">
+                {monthlyROI.toFixed(2)}%
+              </p>
+              <p className="text-xs text-gray-500 mt-1">on your investment</p>
+            </div>
+
+            <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
+              <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Annual Return %</p>
+              <p className="text-2xl font-bold text-purple-400" data-testid="result-annual-roi">
+                {annualROI.toFixed(2)}%
+              </p>
+              <p className="text-xs text-gray-500 mt-1">yearly ROI</p>
+            </div>
+
+            <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
+              <p className="text-gray-400 text-xs uppercase tracking-wide mb-1">Payback Period</p>
+              <p className="text-2xl font-bold text-indigo-400" data-testid="result-payback">
+                {userMonthlyReturn > 0 ? Math.ceil(userContribution / userMonthlyReturn) : '-'} mo
+              </p>
+              <p className="text-xs text-gray-500 mt-1">to recover investment</p>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Summary */}
-      <div className="mt-8 pt-6 border-t border-slate-700">
-        <p className="text-gray-300 text-sm mb-3">
-          With <span className="font-semibold text-orange-400">{teamMembers} team member{teamMembers !== 1 ? 's' : ''}</span>, each would earn approximately{' '}
-          <span className="font-semibold text-green-400">
-            ${salaryPerMember.toLocaleString('en-US', { maximumFractionDigits: 0 })}/month
-          </span>{' '}
-          or{' '}
-          <span className="font-semibold text-blue-400">
-            ${annualSalaryPerMember.toLocaleString('en-US', { maximumFractionDigits: 0 })}/year
-          </span>{' '}
-          from the revenue distribution system.
+      {/* Simple Explanation */}
+      <div className="mt-8 pt-6 border-t border-slate-700 bg-slate-800/50 rounded-lg p-4">
+        <p className="text-gray-300 text-sm leading-relaxed">
+          <span className="font-semibold text-orange-400">💡 How it works:</span> You contribute <span className="font-bold text-orange-400">${userContribution.toLocaleString()}</span> to the EthicX system. Each month, you receive <span className="font-bold text-green-400">${userMonthlyReturn.toLocaleString('en-US', { maximumFractionDigits: 2 })}</span> from our revenue distribution. That's a <span className="font-bold text-blue-400">{monthlyROI.toFixed(2)}% monthly return</span>, meaning your investment would be fully recovered in approximately <span className="font-bold text-indigo-400">{userMonthlyReturn > 0 ? Math.ceil(userContribution / userMonthlyReturn) : '∞'} months</span>.
         </p>
       </div>
     </div>
