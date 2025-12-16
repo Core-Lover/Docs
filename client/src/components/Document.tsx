@@ -18,55 +18,53 @@ import ethicxLogo from '@assets/file_00000000fefc7207b0b856440a0ea901_1765874535
 
 export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <div ref={ref} className="max-w-4xl mx-auto bg-white text-black p-8 md:p-12 shadow-2xl min-h-screen relative overflow-visible" id="pdf-content">
+    <div ref={ref} className="max-w-4xl mx-auto bg-white text-gray-900 p-8 md:p-12 shadow-lg min-h-screen relative overflow-visible" id="pdf-content" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* Header */}
-      <header className="mb-12 border-b border-gray-300 pb-8 relative z-10">
+      <header className="mb-12 border-b border-blue-200 pb-8 relative z-10">
         <div className="flex justify-between items-start">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="h-14 w-14 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center shadow-md border-2 border-blue-700">
-                <img 
-                  src={ethicxLogo}
-                  alt="EthicX Logo"
-                  className="h-10 w-10 object-contain"
-                />
-              </div>
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">EthicX</h1>
+              <img 
+                src={ethicxLogo}
+                alt="EthicX Logo"
+                className="h-12 w-12 object-contain"
+              />
+              <h1 className="text-4xl font-bold tracking-tight text-blue-900">EthicX</h1>
             </div>
-            <h2 className="text-xl text-gray-600 font-light tracking-wide">Mining & On-Chain Infrastructure</h2>
+            <h2 className="text-lg text-blue-600 font-light tracking-tight">Mining & On-Chain Infrastructure</h2>
           </div>
           <div className="text-right">
-            <Badge variant="outline" className="border-blue-300 text-blue-600 mb-2">Project Overview</Badge>
-            <p className="text-sm text-gray-600">Contributor Hiring Document</p>
-            <p className="text-sm text-gray-600">December 2025</p>
+            <Badge variant="outline" className="border-blue-400 bg-blue-50 text-blue-700 mb-2 font-medium">Project Overview</Badge>
+            <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mt-2">Contributor Hiring Document</p>
+            <p className="text-xs text-gray-400">December 2025</p>
           </div>
         </div>
       </header>
 
       {/* 1. Core System */}
       <section className="mb-12 relative z-10">
-        <div className="flex items-center gap-2 mb-4">
-          <Cpu className="h-5 w-5 text-blue-600" />
+        <div className="flex items-center gap-3 mb-5">
+          <div className="w-1 h-6 bg-blue-600 rounded-full"></div>
           <h3 className="text-2xl font-bold text-gray-900">1. Core System Description</h3>
         </div>
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-          <p className="text-lg leading-relaxed text-gray-800">
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+          <p className="text-base leading-relaxed text-gray-700">
             EIX is a mining-based blockchain ecosystem integrated with <span className="font-semibold text-blue-700">on-chain user verification</span> and <span className="font-semibold text-blue-700">multi-chain no-code blockchain tools</span>. 
             The system is designed to generate sustainable, recurring revenue while supporting long-term liquidity, listings, and ecosystem growth.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <div className="p-4 rounded-lg bg-white border border-gray-200">
+            <div className="p-4 rounded-lg bg-white border border-gray-300 hover:border-blue-400 transition">
               <ShieldCheck className="h-6 w-6 text-blue-600 mb-2" />
               <h4 className="font-semibold text-gray-900">User Verification</h4>
               <p className="text-sm text-gray-600">On-chain identity verification fees</p>
             </div>
-            <div className="p-4 rounded-lg bg-white border border-gray-200">
-              <Layers className="h-6 w-6 text-purple-600 mb-2" />
+            <div className="p-4 rounded-lg bg-white border border-gray-300 hover:border-blue-400 transition">
+              <Layers className="h-6 w-6 text-blue-600 mb-2" />
               <h4 className="font-semibold text-gray-900">Utility Tools</h4>
               <p className="text-sm text-gray-600">Token deployment & smart contracts</p>
             </div>
-            <div className="p-4 rounded-lg bg-white border border-gray-200">
-              <Cpu className="h-6 w-6 text-green-600 mb-2" />
+            <div className="p-4 rounded-lg bg-white border border-gray-300 hover:border-blue-400 transition">
+              <Cpu className="h-6 w-6 text-blue-600 mb-2" />
               <h4 className="font-semibold text-gray-900">App Mining</h4>
               <p className="text-sm text-gray-600">Staking & harvesting mechanisms</p>
             </div>
@@ -77,8 +75,8 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       {/* 2 & 3. Revenue Models */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 relative z-10">
         <section>
-          <div className="flex items-center gap-2 mb-4">
-            <Users className="h-5 w-5 text-blue-600" />
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-1 h-5 bg-blue-600"></div>
             <h3 className="text-xl font-bold text-gray-900">2. On-Chain Verification</h3>
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
@@ -102,8 +100,8 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
         </section>
 
         <section>
-          <div className="flex items-center gap-2 mb-4">
-            <Globe className="h-5 w-5 text-blue-600" />
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-1 h-5 bg-blue-600"></div>
             <h3 className="text-xl font-bold text-gray-900">3. Multi-Chain Tools</h3>
           </div>
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
@@ -135,10 +133,10 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
 
       {/* 4 & 5. Total Reserve & Distribution */}
       <section className="mb-12 relative z-10">
-        <div className="bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-lg p-8">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-            <BarChart3 className="h-5 w-5 text-blue-600" />
-            Financial Overview & Distribution
+        <div className="bg-white border border-gray-300 rounded-lg p-8">
+          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+            <div className="w-1 h-6 bg-blue-600"></div>
+            <span>Financial Overview & Distribution</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
@@ -181,8 +179,8 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
 
       {/* 6. Tokenomics */}
       <section className="mb-12 relative z-10">
-        <div className="flex items-center gap-2 mb-6">
-          <Coins className="h-5 w-5 text-blue-600" />
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-1 h-6 bg-blue-600"></div>
           <h3 className="text-xl font-bold text-gray-900">6. EIX Tokenomics</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -205,8 +203,8 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
 
       {/* 7, 8, 9. Team & Hiring */}
       <section className="mb-12 relative z-10">
-        <div className="flex items-center gap-2 mb-6">
-          <Briefcase className="h-5 w-5 text-blue-600" />
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-1 h-6 bg-blue-600"></div>
           <h3 className="text-xl font-bold text-gray-900">7. Team & Partnership Opportunities</h3>
         </div>
         
@@ -257,8 +255,8 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       </section>
 
       {/* Footer / Contact */}
-      <footer className="mt-16 pt-8 border-t border-gray-300 text-center relative z-10">
-        <div className="inline-block p-6 rounded-2xl bg-gradient-to-r from-blue-50 to-white border border-blue-200">
+      <footer className="mt-16 pt-8 border-t border-blue-200 text-center relative z-10">
+        <div className="inline-block p-8 rounded-xl bg-blue-50 border border-blue-200">
           <h3 className="text-xl font-bold text-gray-900 mb-2">Apply As A Contributor</h3>
           <p className="text-gray-600 mb-6">Join the EIX Infrastructure</p>
           

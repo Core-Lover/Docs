@@ -33,34 +33,34 @@
 }
 
 :root {
-  /* Dark Tech Theme by default */
-  --background: 222 47% 11%; /* Deep Blue/Black */
-  --foreground: 210 40% 98%; /* Off-white */
+  /* Bloomberg/Binance Professional Theme */
+  --background: 210 17% 98%; /* Off-white/Light gray */
+  --foreground: 210 11% 15%; /* Dark slate for text */
 
-  --card: 222 47% 11%;
-  --card-foreground: 210 40% 98%;
+  --card: 0 0% 100%; /* Pure white for cards */
+  --card-foreground: 210 11% 15%;
 
-  --popover: 222 47% 11%;
-  --popover-foreground: 210 40% 98%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 210 11% 15%;
 
-  --primary: 160 84% 39%; /* Emerald Green for "Growth/Mining" */
+  --primary: 208 97% 41%; /* Professional Binance Blue */
   --primary-foreground: 0 0% 100%;
 
-  --secondary: 217 33% 17%; /* Lighter blue/grey */
-  --secondary-foreground: 210 40% 98%;
+  --secondary: 210 14% 89%; /* Light gray */
+  --secondary-foreground: 210 11% 15%;
 
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
+  --muted: 210 8% 70%;
+  --muted-foreground: 210 8% 50%;
 
-  --accent: 160 84% 39%;
+  --accent: 208 97% 41%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
-  --destructive-foreground: 210 40% 98%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: 217 33% 20%;
-  --input: 217 33% 17%;
-  --ring: 160 84% 39%;
+  --border: 210 8% 85%;
+  --input: 0 0% 100%;
+  --ring: 208 97% 41%;
 
   --radius: 0.5rem;
 }
