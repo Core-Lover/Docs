@@ -24,52 +24,52 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ targetRef }) => 
     try {
       setIsGenerating(true);
       toast({
-        title: "Generating PDF...",
-        description: "Opening print dialog...",
+        title: "Downloading...",
+        description: "Preparing your document...",
       });
 
       const element = targetRef.current;
-      const html2canvas = (await import('html2canvas')).default;
-      const jsPDF = (await import('jspdf')).jsPDF;
+      const htmlContent = element.innerHTML;
 
-      // Render the element to canvas - 1:1 original dimensions
-      const canvas = await html2canvas(element, {
-        scale: 1,
-        useCORS: true,
-        backgroundColor: '#0f172a',
-        windowWidth: element.offsetWidth,
-        windowHeight: element.scrollHeight,
-        removeContainer: true
-      });
+      // Create a complete HTML document with styles
+      const fullHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EIX-Project-Overview</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    @media print { body { margin: 0; padding: 0; } }
+  </style>
+</head>
+<body>
+  ${htmlContent}
+</body>
+</html>`;
 
-      // Get canvas data at 1:1 ratio
-      const imageData = canvas.toDataURL('image/png');
-      
-      // Create PDF with dimensions that match canvas 1:1
-      const pdfDoc = new jsPDF({
-        orientation: 'portrait',
-        unit: 'px',
-        format: [canvas.width, canvas.height],
-      });
-
-      const imageWidth = canvas.width;
-      const imageHeight = canvas.height;
-
-      // Add image to PDF at 1:1 ratio
-      pdfDoc.addImage(imageData, 'PNG', 0, 0, imageWidth, imageHeight);
-
-      pdfDoc.save('EIX-Project-Overview.pdf');
+      // Create blob and download
+      const blob = new Blob([fullHtml], { type: 'text/html' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'EIX-Project-Overview.html';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
 
       toast({
         title: "Success!",
-        description: "PDF downloaded successfully.",
+        description: "Document downloaded successfully.",
       });
     } catch (error: any) {
-      console.error('Full error:', error);
+      console.error('Download error:', error);
       toast({
         variant: "destructive",
         title: "Error",
-        description: "Could not generate PDF. Try using your browser's print function instead.",
+        description: "Could not download document. Please try again.",
       });
     } finally {
       setIsGenerating(false);
@@ -123,30 +123,20 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ targetRef }) => 
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-50 flex gap-2">
+    <div className="flex gap-2 justify-center pt-6 pb-4">
       <Button 
         onClick={handleDownload} 
         disabled={isGenerating}
-        className="shadow-lg rounded-full h-14 w-14 md:w-auto md:h-12 md:px-6 md:rounded-lg"
+        className="shadow-lg"
         size="lg"
-        title="Download as PDF"
+        title="Download as HTML"
       >
         {isGenerating ? (
           <Loader2 className="h-5 w-5 animate-spin" />
         ) : (
           <Download className="h-5 w-5" />
         )}
-        <span className="hidden md:inline ml-2 font-medium">Download</span>
-      </Button>
-      <Button 
-        onClick={handlePrintToPDF}
-        variant="outline"
-        className="shadow-lg rounded-full h-14 w-14 md:w-auto md:h-12 md:px-6 md:rounded-lg"
-        size="lg"
-        title="Print/Save as PDF"
-      >
-        <span className="text-lg">🖨️</span>
-        <span className="hidden md:inline ml-2 font-medium">Print</span>
+        <span className="ml-2 font-medium">Download</span>
       </Button>
     </div>
   );
