@@ -21,7 +21,7 @@ export const SalaryCalculator = () => {
   return (
     <div className="bg-slate-900 border border-slate-700 rounded-lg p-8 mb-12 relative z-10">
       <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-        <div className="w-1 h-6 bg-yellow-500 rounded-full"></div>
+        <div className="w-1 h-6 bg-orange-500 rounded-full"></div>
         <span>Salary & Revenue Calculator</span>
       </h3>
 
@@ -96,7 +96,7 @@ export const SalaryCalculator = () => {
 
           <div className="bg-slate-800 rounded-lg p-4 border border-slate-700">
             <p className="text-gray-300 text-sm">Monthly Distribution Pool</p>
-            <p className="text-2xl font-bold text-yellow-400" data-testid="result-total-distribute">
+            <p className="text-2xl font-bold text-orange-400" data-testid="result-total-distribute">
               ${totalToDistribute.toLocaleString('en-US', { maximumFractionDigits: 0 })}
             </p>
             <p className="text-xs text-gray-400 mt-1">{distributionPercent}% of ${monthlyIncome.toLocaleString()}</p>
@@ -127,9 +127,9 @@ export const SalaryCalculator = () => {
           </div>
 
           {contributedAmount > 0 && (
-            <div className="bg-slate-800 rounded-lg p-4 border border-yellow-500/30 bg-yellow-500/10">
+            <div className="bg-slate-800 rounded-lg p-4 border border-orange-500/30 bg-orange-500/10">
               <p className="text-gray-300 text-sm">Monthly ROI on Contributed Capital</p>
-              <p className="text-2xl font-bold text-yellow-300" data-testid="result-roi">
+              <p className="text-2xl font-bold text-orange-300" data-testid="result-roi">
                 {investmentReturn.toFixed(2)}%
               </p>
               <p className="text-xs text-gray-400 mt-1">Based on ${contributedAmount.toLocaleString()} contribution</p>
@@ -141,7 +141,7 @@ export const SalaryCalculator = () => {
       {/* Summary */}
       <div className="mt-8 pt-6 border-t border-slate-700">
         <p className="text-gray-300 text-sm mb-3">
-          With <span className="font-semibold text-yellow-400">{teamMembers} team member{teamMembers !== 1 ? 's' : ''}</span>, each would earn approximately{' '}
+          With <span className="font-semibold text-orange-400">{teamMembers} team member{teamMembers !== 1 ? 's' : ''}</span>, each would earn approximately{' '}
           <span className="font-semibold text-green-400">
             ${salaryPerMember.toLocaleString('en-US', { maximumFractionDigits: 0 })}/month
           </span>{' '}

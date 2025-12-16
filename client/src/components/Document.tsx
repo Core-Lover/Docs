@@ -24,7 +24,7 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
   return (
     <div ref={ref} className="max-w-4xl mx-auto bg-slate-950 text-white p-8 md:p-12 shadow-2xl min-h-screen relative overflow-visible" id="pdf-content" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* Header */}
-      <header className="mb-12 border-b border-yellow-500/30 pb-8 relative z-10">
+      <header className="mb-12 border-b border-orange-500/30 pb-8 relative z-10">
         <div className="flex justify-between items-start">
           <div>
             <div className="flex items-center gap-4 mb-4">
@@ -35,13 +35,13 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
               />
               <div>
                 <h1 className="text-4xl font-bold tracking-tight text-white">EthicX</h1>
-                <p className="text-yellow-400 text-sm font-semibold">Infrastructure & Mining</p>
+                <p className="text-orange-400 text-sm font-semibold">Infrastructure & Mining</p>
               </div>
             </div>
-            <h2 className="text-lg text-yellow-500 font-light tracking-tight">Mining & On-Chain Infrastructure</h2>
+            <h2 className="text-lg text-orange-500 font-light tracking-tight">Mining & On-Chain Infrastructure</h2>
           </div>
           <div className="text-right">
-            <Badge variant="outline" className="border-yellow-500/50 bg-yellow-500/10 text-yellow-400 mb-2 font-medium">Project Overview</Badge>
+            <Badge variant="outline" className="border-orange-500/50 bg-orange-500/10 text-orange-400 mb-2 font-medium">Project Overview</Badge>
             <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mt-2">Contributor Hiring Document</p>
             <p className="text-xs text-gray-500">December 2025</p>
           </div>
@@ -51,27 +51,27 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       {/* 1. Core System */}
       <section className="mb-12 relative z-10">
         <div className="flex items-center gap-3 mb-5">
-          <div className="w-1 h-6 bg-yellow-500 rounded-full"></div>
+          <div className="w-1 h-6 bg-orange-500 rounded-full"></div>
           <h3 className="text-2xl font-bold text-white">1. Core System Description</h3>
         </div>
         <div className="bg-slate-900 border border-slate-700 rounded-lg p-6">
           <p className="text-base leading-relaxed text-gray-300">
-            EIX is a mining-based blockchain ecosystem integrated with <span className="font-semibold text-yellow-400">on-chain user verification</span> and <span className="font-semibold text-yellow-400">multi-chain no-code blockchain tools</span>. 
+            EIX is a mining-based blockchain ecosystem integrated with <span className="font-semibold text-orange-400">on-chain user verification</span> and <span className="font-semibold text-orange-400">multi-chain no-code blockchain tools</span>. 
             The system is designed to generate sustainable, recurring revenue while supporting long-term liquidity, listings, and ecosystem growth.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-yellow-500/50 transition">
-              <ShieldCheck className="h-6 w-6 text-yellow-400 mb-2" />
+            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-orange-500/50 transition">
+              <ShieldCheck className="h-6 w-6 text-orange-400 mb-2" />
               <h4 className="font-semibold text-white">User Verification</h4>
               <p className="text-sm text-gray-400">On-chain identity verification fees</p>
             </div>
-            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-yellow-500/50 transition">
-              <Layers className="h-6 w-6 text-yellow-400 mb-2" />
+            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-orange-500/50 transition">
+              <Layers className="h-6 w-6 text-orange-400 mb-2" />
               <h4 className="font-semibold text-white">Utility Tools</h4>
               <p className="text-sm text-gray-400">Token deployment & smart contracts</p>
             </div>
-            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-yellow-500/50 transition">
-              <Cpu className="h-6 w-6 text-yellow-400 mb-2" />
+            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-orange-500/50 transition">
+              <Cpu className="h-6 w-6 text-orange-400 mb-2" />
               <h4 className="font-semibold text-white">App Mining</h4>
               <p className="text-sm text-gray-400">Staking & harvesting mechanisms</p>
             </div>
@@ -83,7 +83,7 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 relative z-10">
         <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-5 bg-yellow-500"></div>
+            <div className="w-1 h-5 bg-orange-500"></div>
             <h3 className="text-xl font-bold text-white">2. On-Chain Verification</h3>
           </div>
           <div className="bg-slate-900 border border-slate-700 rounded-lg p-6">
@@ -99,16 +99,16 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
               <span className="text-gray-400">Total Collected</span>
               <span className="font-mono text-white">~ $3,000,000</span>
             </div>
-            <div className="mt-4 p-3 bg-yellow-500/10 rounded border border-yellow-500/30">
-              <p className="text-sm text-yellow-400 font-medium text-center">System Reserve (30-50%)</p>
-              <p className="text-xl font-bold text-center text-yellow-300">$900k - $1.5M</p>
+            <div className="mt-4 p-3 bg-orange-500/10 rounded border border-orange-500/30">
+              <p className="text-sm text-orange-400 font-medium text-center">System Reserve (30-50%)</p>
+              <p className="text-xl font-bold text-center text-orange-300">$900k - $1.5M</p>
             </div>
           </div>
         </section>
 
         <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-5 bg-yellow-500"></div>
+            <div className="w-1 h-5 bg-orange-500"></div>
             <h3 className="text-xl font-bold text-white">3. Multi-Chain Tools</h3>
           </div>
           <div className="bg-slate-900 border border-slate-700 rounded-lg p-6">
@@ -131,7 +131,7 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
               </div>
               <div className="flex justify-between font-bold text-lg">
                 <span className="text-gray-200">System Reserve (40%)</span>
-                <span className="text-yellow-400">~$36,000 / mo</span>
+                <span className="text-orange-400">~$36,000 / mo</span>
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       <section className="mb-12 relative z-10">
         <div className="bg-slate-900 border border-slate-700 rounded-lg p-8">
           <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-            <div className="w-1 h-6 bg-yellow-500"></div>
+            <div className="w-1 h-6 bg-orange-500"></div>
             <span>Financial Overview & Distribution</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -157,9 +157,9 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
                   <span className="text-gray-300">Blockchain tools</span>
                   <span className="font-mono text-white">~$36,000</span>
                 </div>
-                <div className="flex justify-between p-4 bg-yellow-500/10 rounded border border-yellow-500/30">
-                  <span className="font-bold text-yellow-400">Total Monthly</span>
-                  <span className="font-bold font-mono text-yellow-300">~$156,000</span>
+                <div className="flex justify-between p-4 bg-orange-500/10 rounded border border-orange-500/30">
+                  <span className="font-bold text-orange-400">Total Monthly</span>
+                  <span className="font-bold font-mono text-orange-300">~$156,000</span>
                 </div>
               </div>
             </div>
@@ -167,11 +167,11 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
               <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Distribution Model</h4>
               <ul className="space-y-3">
                 <li className="flex gap-3 items-start">
-                  <span className="bg-yellow-500/20 text-yellow-300 font-bold px-2 py-0.5 rounded text-xs mt-1">25%</span>
+                  <span className="bg-orange-500/20 text-orange-300 font-bold px-2 py-0.5 rounded text-xs mt-1">25%</span>
                   <span className="text-gray-300 text-sm">Distributed to active team members and contributors as revenue share.</span>
                 </li>
                 <li className="flex gap-3 items-start">
-                  <span className="bg-yellow-500/20 text-yellow-300 font-bold px-2 py-0.5 rounded text-xs mt-1">75%</span>
+                  <span className="bg-orange-500/20 text-orange-300 font-bold px-2 py-0.5 rounded text-xs mt-1">75%</span>
                   <span className="text-gray-300 text-sm">Allocated to Liquidity Provisioning, Exchange Listings, and Buybacks.</span>
                 </li>
               </ul>
@@ -187,7 +187,7 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       {/* 6. Tokenomics */}
       <section className="mb-12 relative z-10">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-1 h-6 bg-yellow-500"></div>
+          <div className="w-1 h-6 bg-orange-500"></div>
           <h3 className="text-xl font-bold text-white">6. EIX Tokenomics</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -199,7 +199,7 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
             { label: "Team & Contributors", val: "10%", count: "2,100,000" },
           ].map((item, i) => (
             <div key={i} className="bg-slate-900 border border-slate-700 p-4 rounded-lg flex flex-col items-center text-center">
-              <span className="text-2xl font-bold text-yellow-400 mb-1">{item.val}</span>
+              <span className="text-2xl font-bold text-orange-400 mb-1">{item.val}</span>
               <span className="text-sm font-medium text-white mb-1">{item.label}</span>
               <span className="text-xs text-gray-400">{item.count} EIX</span>
             </div>
@@ -214,7 +214,7 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       {/* 7, 8, 9. Team & Hiring */}
       <section className="mb-12 relative z-10">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-1 h-6 bg-yellow-500"></div>
+          <div className="w-1 h-6 bg-orange-500"></div>
           <h3 className="text-xl font-bold text-white">7. Team & Partnership Opportunities</h3>
         </div>
         
@@ -229,7 +229,7 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
                 "Accountant – Funding, Treasury, and Financial Management"
               ].map((role, i) => (
                 <div key={i} className="flex items-center gap-3 p-3 rounded bg-slate-800 border border-slate-700">
-                  <div className="h-6 w-6 rounded-full bg-yellow-500/20 flex items-center justify-center text-xs font-bold text-yellow-400">
+                  <div className="h-6 w-6 rounded-full bg-orange-500/20 flex items-center justify-center text-xs font-bold text-orange-400">
                     {i + 1}
                   </div>
                   <span className="text-sm text-gray-300">{role}</span>
@@ -244,18 +244,18 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
               <li>Revenue share from monthly system income</li>
               <li>EIX token allocation from the team pool</li>
               <li>Long-term partnership position</li>
-              <li><span className="text-yellow-400 font-medium">No fixed salary</span> (performance & revenue based)</li>
+              <li><span className="text-orange-400 font-medium">No fixed salary</span> (performance & revenue based)</li>
             </ul>
 
             <div className="mt-6 p-4 bg-slate-800 rounded border border-slate-700">
               <h5 className="font-semibold text-white mb-2 text-sm">Eligibility Options</h5>
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div>
-                  <span className="text-yellow-400 font-bold block mb-1">Option A: Skills</span>
+                  <span className="text-orange-400 font-bold block mb-1">Option A: Skills</span>
                   <span className="text-gray-400">Proven experience, Weekly KPIs, 3-month commitment</span>
                 </div>
                 <div>
-                  <span className="text-yellow-400 font-bold block mb-1">Option B: Capital</span>
+                  <span className="text-orange-400 font-bold block mb-1">Option B: Capital</span>
                   <span className="text-gray-400">$1k-$5k contribution for liquidity/listings</span>
                 </div>
               </div>
@@ -265,8 +265,8 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       </section>
 
       {/* Footer / Contact */}
-      <footer className="mt-16 pt-8 border-t border-yellow-500/30 text-center relative z-10">
-        <div className="inline-block p-8 rounded-xl bg-yellow-500/10 border border-yellow-500/30">
+      <footer className="mt-16 pt-8 border-t border-orange-500/30 text-center relative z-10">
+        <div className="inline-block p-8 rounded-xl bg-orange-500/10 border border-orange-500/30">
           <h3 className="text-xl font-bold text-white mb-2">Apply As A Contributor</h3>
           <p className="text-gray-300 mb-6">Join the EIX Infrastructure</p>
           
@@ -282,13 +282,13 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 bg-yellow-500/20 rounded-full flex items-center justify-center">
-                <Users className="h-5 w-5 text-yellow-400" />
+              <div className="h-10 w-10 bg-orange-500/20 rounded-full flex items-center justify-center">
+                <Users className="h-5 w-5 text-orange-400" />
               </div>
               <div className="text-left">
                 <span className="block text-xs text-gray-400 uppercase">Contact Person</span>
                 <span className="block text-lg font-semibold text-white">Bilawal Khan</span>
-                <span className="block text-xs text-yellow-400">Co-Founder EthicX</span>
+                <span className="block text-xs text-orange-400">Co-Founder EthicX</span>
               </div>
             </div>
           </div>
