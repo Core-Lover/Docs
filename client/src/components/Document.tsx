@@ -14,6 +14,7 @@ import {
   Globe,
   Layers
 } from 'lucide-react';
+import ethicxLogo from '@assets/generated_images/file_00000000fefc7207b0b856440a0ea901_1765874535791.png';
 
 export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
   return (
@@ -23,10 +24,12 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
         <div className="flex justify-between items-start">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <div className="h-10 w-10 bg-blue-100 rounded-lg flex items-center justify-center border border-blue-300">
-                <Network className="h-6 w-6 text-blue-600" />
-              </div>
-              <h1 className="text-4xl font-bold tracking-tight text-gray-900">EIX</h1>
+              <img 
+                src={ethicxLogo}
+                alt="EthicX Logo"
+                className="h-12 w-12 object-contain"
+              />
+              <h1 className="text-4xl font-bold tracking-tight text-gray-900">EthicX</h1>
             </div>
             <h2 className="text-xl text-gray-600 font-light tracking-wide">Mining & On-Chain Infrastructure</h2>
           </div>
