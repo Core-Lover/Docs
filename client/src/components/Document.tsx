@@ -14,7 +14,7 @@ import {
   Globe,
   Layers
 } from 'lucide-react';
-import ethicxLogo from '@assets/generated_images/file_00000000fefc7207b0b856440a0ea901_1765874535791.png';
+import ethicxLogo from '@assets/file_00000000fefc7207b0b856440a0ea901_1765874535791.png';
 
 export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
   return (
