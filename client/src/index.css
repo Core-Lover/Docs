@@ -33,34 +33,34 @@
 }
 
 :root {
-  /* Bloomberg/Binance Professional Theme */
-  --background: 210 17% 98%; /* Off-white/Light gray */
-  --foreground: 210 11% 15%; /* Dark slate for text */
+  /* Binance Bloomberg Dark Professional Theme */
+  --background: 210 13% 12%; /* Deep navy/charcoal */
+  --foreground: 210 17% 98%; /* Off-white text */
 
-  --card: 0 0% 100%; /* Pure white for cards */
-  --card-foreground: 210 11% 15%;
+  --card: 210 13% 18%; /* Slightly lighter card bg */
+  --card-foreground: 210 17% 98%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 210 11% 15%;
+  --popover: 210 13% 18%;
+  --popover-foreground: 210 17% 98%;
 
-  --primary: 208 97% 41%; /* Professional Binance Blue */
-  --primary-foreground: 0 0% 100%;
+  --primary: 45 100% 51%; /* Binance Yellow */
+  --primary-foreground: 210 13% 12%;
 
-  --secondary: 210 14% 89%; /* Light gray */
-  --secondary-foreground: 210 11% 15%;
+  --secondary: 210 16% 28%; /* Medium dark gray */
+  --secondary-foreground: 210 17% 98%;
 
-  --muted: 210 8% 70%;
-  --muted-foreground: 210 8% 50%;
+  --muted: 210 10% 50%;
+  --muted-foreground: 210 10% 70%;
 
-  --accent: 208 97% 41%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 45 100% 51%; /* Binance Yellow accent */
+  --accent-foreground: 210 13% 12%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
-  --border: 210 8% 85%;
-  --input: 0 0% 100%;
-  --ring: 208 97% 41%;
+  --border: 210 13% 25%;
+  --input: 210 13% 18%;
+  --ring: 45 100% 51%;
 
   --radius: 0.5rem;
 }

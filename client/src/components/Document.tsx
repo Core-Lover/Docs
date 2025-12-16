@@ -18,9 +18,9 @@ import ethicxLogo from '@assets/file_00000000fefc7207b0b856440a0ea901_1765874535
 
 export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <div ref={ref} className="max-w-4xl mx-auto bg-white text-gray-900 p-8 md:p-12 shadow-lg min-h-screen relative overflow-visible" id="pdf-content" style={{ fontFamily: 'Inter, sans-serif' }}>
+    <div ref={ref} className="max-w-4xl mx-auto bg-slate-950 text-white p-8 md:p-12 shadow-2xl min-h-screen relative overflow-visible" id="pdf-content" style={{ fontFamily: 'Inter, sans-serif' }}>
       {/* Header */}
-      <header className="mb-12 border-b border-blue-200 pb-8 relative z-10">
+      <header className="mb-12 border-b border-yellow-500/30 pb-8 relative z-10">
         <div className="flex justify-between items-start">
           <div>
             <div className="flex items-center gap-3 mb-2">
@@ -29,14 +29,14 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
                 alt="EthicX Logo"
                 className="h-12 w-12 object-contain"
               />
-              <h1 className="text-4xl font-bold tracking-tight text-blue-900">EthicX</h1>
+              <h1 className="text-4xl font-bold tracking-tight text-white">EthicX</h1>
             </div>
-            <h2 className="text-lg text-blue-600 font-light tracking-tight">Mining & On-Chain Infrastructure</h2>
+            <h2 className="text-lg text-yellow-500 font-light tracking-tight">Mining & On-Chain Infrastructure</h2>
           </div>
           <div className="text-right">
-            <Badge variant="outline" className="border-blue-400 bg-blue-50 text-blue-700 mb-2 font-medium">Project Overview</Badge>
-            <p className="text-xs text-gray-500 font-medium uppercase tracking-wider mt-2">Contributor Hiring Document</p>
-            <p className="text-xs text-gray-400">December 2025</p>
+            <Badge variant="outline" className="border-yellow-500/50 bg-yellow-500/10 text-yellow-400 mb-2 font-medium">Project Overview</Badge>
+            <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mt-2">Contributor Hiring Document</p>
+            <p className="text-xs text-gray-500">December 2025</p>
           </div>
         </div>
       </header>
@@ -44,29 +44,29 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       {/* 1. Core System */}
       <section className="mb-12 relative z-10">
         <div className="flex items-center gap-3 mb-5">
-          <div className="w-1 h-6 bg-blue-600 rounded-full"></div>
-          <h3 className="text-2xl font-bold text-gray-900">1. Core System Description</h3>
+          <div className="w-1 h-6 bg-yellow-500 rounded-full"></div>
+          <h3 className="text-2xl font-bold text-white">1. Core System Description</h3>
         </div>
-        <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-          <p className="text-base leading-relaxed text-gray-700">
-            EIX is a mining-based blockchain ecosystem integrated with <span className="font-semibold text-blue-700">on-chain user verification</span> and <span className="font-semibold text-blue-700">multi-chain no-code blockchain tools</span>. 
+        <div className="bg-slate-900 border border-slate-700 rounded-lg p-6">
+          <p className="text-base leading-relaxed text-gray-300">
+            EIX is a mining-based blockchain ecosystem integrated with <span className="font-semibold text-yellow-400">on-chain user verification</span> and <span className="font-semibold text-yellow-400">multi-chain no-code blockchain tools</span>. 
             The system is designed to generate sustainable, recurring revenue while supporting long-term liquidity, listings, and ecosystem growth.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-            <div className="p-4 rounded-lg bg-white border border-gray-300 hover:border-blue-400 transition">
-              <ShieldCheck className="h-6 w-6 text-blue-600 mb-2" />
-              <h4 className="font-semibold text-gray-900">User Verification</h4>
-              <p className="text-sm text-gray-600">On-chain identity verification fees</p>
+            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-yellow-500/50 transition">
+              <ShieldCheck className="h-6 w-6 text-yellow-400 mb-2" />
+              <h4 className="font-semibold text-white">User Verification</h4>
+              <p className="text-sm text-gray-400">On-chain identity verification fees</p>
             </div>
-            <div className="p-4 rounded-lg bg-white border border-gray-300 hover:border-blue-400 transition">
-              <Layers className="h-6 w-6 text-blue-600 mb-2" />
-              <h4 className="font-semibold text-gray-900">Utility Tools</h4>
-              <p className="text-sm text-gray-600">Token deployment & smart contracts</p>
+            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-yellow-500/50 transition">
+              <Layers className="h-6 w-6 text-yellow-400 mb-2" />
+              <h4 className="font-semibold text-white">Utility Tools</h4>
+              <p className="text-sm text-gray-400">Token deployment & smart contracts</p>
             </div>
-            <div className="p-4 rounded-lg bg-white border border-gray-300 hover:border-blue-400 transition">
-              <Cpu className="h-6 w-6 text-blue-600 mb-2" />
-              <h4 className="font-semibold text-gray-900">App Mining</h4>
-              <p className="text-sm text-gray-600">Staking & harvesting mechanisms</p>
+            <div className="p-4 rounded-lg bg-slate-800 border border-slate-600 hover:border-yellow-500/50 transition">
+              <Cpu className="h-6 w-6 text-yellow-400 mb-2" />
+              <h4 className="font-semibold text-white">App Mining</h4>
+              <p className="text-sm text-gray-400">Staking & harvesting mechanisms</p>
             </div>
           </div>
         </div>
@@ -76,55 +76,55 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 relative z-10">
         <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-5 bg-blue-600"></div>
-            <h3 className="text-xl font-bold text-gray-900">2. On-Chain Verification</h3>
+            <div className="w-1 h-5 bg-yellow-500"></div>
+            <h3 className="text-xl font-bold text-white">2. On-Chain Verification</h3>
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <div className="flex justify-between items-center border-b border-gray-300 pb-2 mb-2">
-              <span className="text-gray-600">Fee per user</span>
-              <span className="font-mono text-gray-900">0.01 ETH (~$30)</span>
+          <div className="bg-slate-900 border border-slate-700 rounded-lg p-6">
+            <div className="flex justify-between items-center border-b border-slate-700 pb-2 mb-2">
+              <span className="text-gray-400">Fee per user</span>
+              <span className="font-mono text-white">0.01 ETH (~$30)</span>
             </div>
-            <div className="flex justify-between items-center border-b border-gray-300 pb-2 mb-2">
-              <span className="text-gray-600">Target Adoption</span>
-              <span className="font-mono text-gray-900">100,000 Users</span>
+            <div className="flex justify-between items-center border-b border-slate-700 pb-2 mb-2">
+              <span className="text-gray-400">Target Adoption</span>
+              <span className="font-mono text-white">100,000 Users</span>
             </div>
-            <div className="flex justify-between items-center border-b border-gray-300 pb-2 mb-4">
-              <span className="text-gray-600">Total Collected</span>
-              <span className="font-mono text-gray-900">~ $3,000,000</span>
+            <div className="flex justify-between items-center border-b border-slate-700 pb-2 mb-4">
+              <span className="text-gray-400">Total Collected</span>
+              <span className="font-mono text-white">~ $3,000,000</span>
             </div>
-            <div className="mt-4 p-3 bg-blue-100 rounded border border-blue-300">
-              <p className="text-sm text-blue-700 font-medium text-center">System Reserve (30-50%)</p>
-              <p className="text-xl font-bold text-center text-blue-900">$900k - $1.5M</p>
+            <div className="mt-4 p-3 bg-yellow-500/10 rounded border border-yellow-500/30">
+              <p className="text-sm text-yellow-400 font-medium text-center">System Reserve (30-50%)</p>
+              <p className="text-xl font-bold text-center text-yellow-300">$900k - $1.5M</p>
             </div>
           </div>
         </section>
 
         <section>
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-1 h-5 bg-blue-600"></div>
-            <h3 className="text-xl font-bold text-gray-900">3. Multi-Chain Tools</h3>
+            <div className="w-1 h-5 bg-yellow-500"></div>
+            <h3 className="text-xl font-bold text-white">3. Multi-Chain Tools</h3>
           </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-            <p className="text-sm text-gray-600 mb-4">
+          <div className="bg-slate-900 border border-slate-700 rounded-lg p-6">
+            <p className="text-sm text-gray-400 mb-4">
               No-code tools for token deployment, minting, and configuration across 3 blockchains.
             </p>
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Daily Users</span>
-                <span className="text-gray-900">~50</span>
+                <span className="text-gray-400">Daily Users</span>
+                <span className="text-white">~50</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Avg Fee</span>
-                <span className="text-gray-900">$20</span>
+                <span className="text-gray-400">Avg Fee</span>
+                <span className="text-white">$20</span>
               </div>
-              <Separator className="bg-gray-300 my-2" />
+              <Separator className="bg-slate-700 my-2" />
               <div className="flex justify-between font-medium">
-                <span className="text-gray-700">Monthly Revenue</span>
-                <span className="text-green-600">~$90,000</span>
+                <span className="text-gray-300">Monthly Revenue</span>
+                <span className="text-green-400">~$90,000</span>
               </div>
               <div className="flex justify-between font-bold text-lg">
-                <span className="text-gray-800">System Reserve (40%)</span>
-                <span className="text-blue-600">~$36,000 / mo</span>
+                <span className="text-gray-200">System Reserve (40%)</span>
+                <span className="text-yellow-400">~$36,000 / mo</span>
               </div>
             </div>
           </div>
@@ -133,44 +133,44 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
 
       {/* 4 & 5. Total Reserve & Distribution */}
       <section className="mb-12 relative z-10">
-        <div className="bg-white border border-gray-300 rounded-lg p-8">
-          <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-            <div className="w-1 h-6 bg-blue-600"></div>
+        <div className="bg-slate-900 border border-slate-700 rounded-lg p-8">
+          <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
+            <div className="w-1 h-6 bg-yellow-500"></div>
             <span>Financial Overview & Distribution</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Monthly System Reserve</h4>
+              <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Monthly System Reserve</h4>
               <div className="space-y-3">
-                <div className="flex justify-between p-3 bg-white rounded border border-gray-200">
-                  <span className="text-gray-700">On-chain verification</span>
-                  <span className="font-mono text-gray-900">~$120,000</span>
+                <div className="flex justify-between p-3 bg-slate-800 rounded border border-slate-700">
+                  <span className="text-gray-300">On-chain verification</span>
+                  <span className="font-mono text-white">~$120,000</span>
                 </div>
-                <div className="flex justify-between p-3 bg-white rounded border border-gray-200">
-                  <span className="text-gray-700">Blockchain tools</span>
-                  <span className="font-mono text-gray-900">~$36,000</span>
+                <div className="flex justify-between p-3 bg-slate-800 rounded border border-slate-700">
+                  <span className="text-gray-300">Blockchain tools</span>
+                  <span className="font-mono text-white">~$36,000</span>
                 </div>
-                <div className="flex justify-between p-4 bg-blue-100 rounded border border-blue-300">
-                  <span className="font-bold text-blue-900">Total Monthly</span>
-                  <span className="font-bold font-mono text-blue-900">~$156,000</span>
+                <div className="flex justify-between p-4 bg-yellow-500/10 rounded border border-yellow-500/30">
+                  <span className="font-bold text-yellow-400">Total Monthly</span>
+                  <span className="font-bold font-mono text-yellow-300">~$156,000</span>
                 </div>
               </div>
             </div>
             <div>
-              <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Distribution Model</h4>
+              <h4 className="text-sm font-semibold text-gray-300 uppercase tracking-wider mb-4">Distribution Model</h4>
               <ul className="space-y-3">
                 <li className="flex gap-3 items-start">
-                  <span className="bg-blue-200 text-blue-800 font-bold px-2 py-0.5 rounded text-xs mt-1">25%</span>
-                  <span className="text-gray-700 text-sm">Distributed to active team members and contributors as revenue share.</span>
+                  <span className="bg-yellow-500/20 text-yellow-300 font-bold px-2 py-0.5 rounded text-xs mt-1">25%</span>
+                  <span className="text-gray-300 text-sm">Distributed to active team members and contributors as revenue share.</span>
                 </li>
                 <li className="flex gap-3 items-start">
-                  <span className="bg-green-200 text-green-800 font-bold px-2 py-0.5 rounded text-xs mt-1">75%</span>
-                  <span className="text-gray-700 text-sm">Allocated to Liquidity Provisioning, Exchange Listings, and Buybacks.</span>
+                  <span className="bg-yellow-500/20 text-yellow-300 font-bold px-2 py-0.5 rounded text-xs mt-1">75%</span>
+                  <span className="text-gray-300 text-sm">Allocated to Liquidity Provisioning, Exchange Listings, and Buybacks.</span>
                 </li>
               </ul>
-              <div className="mt-4 pt-4 border-t border-gray-300">
-                <p className="text-sm text-center text-gray-600">Annual Liquidity & Growth Reserve</p>
-                <p className="text-2xl font-bold text-center text-gray-900 mt-1">~$1.4 Million / Year</p>
+              <div className="mt-4 pt-4 border-t border-slate-700">
+                <p className="text-sm text-center text-gray-400">Annual Liquidity & Growth Reserve</p>
+                <p className="text-2xl font-bold text-center text-white mt-1">~$1.4 Million / Year</p>
               </div>
             </div>
           </div>
@@ -180,8 +180,8 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       {/* 6. Tokenomics */}
       <section className="mb-12 relative z-10">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-1 h-6 bg-blue-600"></div>
-          <h3 className="text-xl font-bold text-gray-900">6. EIX Tokenomics</h3>
+          <div className="w-1 h-6 bg-yellow-500"></div>
+          <h3 className="text-xl font-bold text-white">6. EIX Tokenomics</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {[
@@ -191,26 +191,26 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
             { label: "Partnerships", val: "5%", count: "1,050,000" },
             { label: "Team & Contributors", val: "10%", count: "2,100,000" },
           ].map((item, i) => (
-            <div key={i} className="bg-gray-50 border border-gray-200 p-4 rounded-lg flex flex-col items-center text-center">
-              <span className="text-2xl font-bold text-blue-600 mb-1">{item.val}</span>
-              <span className="text-sm font-medium text-gray-900 mb-1">{item.label}</span>
-              <span className="text-xs text-gray-600">{item.count} EIX</span>
+            <div key={i} className="bg-slate-900 border border-slate-700 p-4 rounded-lg flex flex-col items-center text-center">
+              <span className="text-2xl font-bold text-yellow-400 mb-1">{item.val}</span>
+              <span className="text-sm font-medium text-white mb-1">{item.label}</span>
+              <span className="text-xs text-gray-400">{item.count} EIX</span>
             </div>
           ))}
         </div>
-        <p className="text-center text-sm text-gray-600 mt-4 font-mono">Total Supply: 21,000,000 EIX</p>
+        <p className="text-center text-sm text-gray-400 mt-4 font-mono">Total Supply: 21,000,000 EIX</p>
       </section>
 
       {/* 7, 8, 9. Team & Hiring */}
       <section className="mb-12 relative z-10">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-1 h-6 bg-blue-600"></div>
-          <h3 className="text-xl font-bold text-gray-900">7. Team & Partnership Opportunities</h3>
+          <div className="w-1 h-6 bg-yellow-500"></div>
+          <h3 className="text-xl font-bold text-white">7. Team & Partnership Opportunities</h3>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">Open Core Contributor Roles</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">Open Core Contributor Roles</h4>
             <div className="space-y-2">
               {[
                 "Executive – Real-World Events & Marketing",
@@ -218,35 +218,35 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
                 "Social Media Manager – X, Telegram, Discord",
                 "Accountant – Funding, Treasury, and Financial Management"
               ].map((role, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded bg-gray-100 border border-gray-300">
-                  <div className="h-6 w-6 rounded-full bg-blue-200 flex items-center justify-center text-xs font-bold text-blue-700">
+                <div key={i} className="flex items-center gap-3 p-3 rounded bg-slate-800 border border-slate-700">
+                  <div className="h-6 w-6 rounded-full bg-yellow-500/20 flex items-center justify-center text-xs font-bold text-yellow-400">
                     {i + 1}
                   </div>
-                  <span className="text-sm text-gray-800">{role}</span>
+                  <span className="text-sm text-gray-300">{role}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-gray-900 mb-4">What Contributors Receive</h4>
-            <ul className="space-y-2 text-sm text-gray-700 list-disc pl-5">
+            <h4 className="text-lg font-semibold text-white mb-4">What Contributors Receive</h4>
+            <ul className="space-y-2 text-sm text-gray-300 list-disc pl-5">
               <li>Revenue share from monthly system income</li>
               <li>EIX token allocation from the team pool</li>
               <li>Long-term partnership position</li>
-              <li><span className="text-blue-600 font-medium">No fixed salary</span> (performance & revenue based)</li>
+              <li><span className="text-yellow-400 font-medium">No fixed salary</span> (performance & revenue based)</li>
             </ul>
 
-            <div className="mt-6 p-4 bg-gray-50 rounded border border-gray-200">
-              <h5 className="font-semibold text-gray-900 mb-2 text-sm">Eligibility Options</h5>
+            <div className="mt-6 p-4 bg-slate-800 rounded border border-slate-700">
+              <h5 className="font-semibold text-white mb-2 text-sm">Eligibility Options</h5>
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div>
-                  <span className="text-blue-700 font-bold block mb-1">Option A: Skills</span>
-                  <span className="text-gray-600">Proven experience, Weekly KPIs, 3-month commitment</span>
+                  <span className="text-yellow-400 font-bold block mb-1">Option A: Skills</span>
+                  <span className="text-gray-400">Proven experience, Weekly KPIs, 3-month commitment</span>
                 </div>
                 <div>
-                  <span className="text-green-700 font-bold block mb-1">Option B: Capital</span>
-                  <span className="text-gray-600">$1k-$5k contribution for liquidity/listings</span>
+                  <span className="text-yellow-400 font-bold block mb-1">Option B: Capital</span>
+                  <span className="text-gray-400">$1k-$5k contribution for liquidity/listings</span>
                 </div>
               </div>
             </div>
@@ -255,35 +255,35 @@ export const Document = React.forwardRef<HTMLDivElement>((props, ref) => {
       </section>
 
       {/* Footer / Contact */}
-      <footer className="mt-16 pt-8 border-t border-blue-200 text-center relative z-10">
-        <div className="inline-block p-8 rounded-xl bg-blue-50 border border-blue-200">
-          <h3 className="text-xl font-bold text-gray-900 mb-2">Apply As A Contributor</h3>
-          <p className="text-gray-600 mb-6">Join the EIX Infrastructure</p>
+      <footer className="mt-16 pt-8 border-t border-yellow-500/30 text-center relative z-10">
+        <div className="inline-block p-8 rounded-xl bg-yellow-500/10 border border-yellow-500/30">
+          <h3 className="text-xl font-bold text-white mb-2">Apply As A Contributor</h3>
+          <p className="text-gray-300 mb-6">Join the EIX Infrastructure</p>
           
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 bg-green-100 rounded-full flex items-center justify-center">
-                <MessageCircle className="h-5 w-5 text-green-700" />
+              <div className="h-10 w-10 bg-green-500/20 rounded-full flex items-center justify-center">
+                <MessageCircle className="h-5 w-5 text-green-400" />
               </div>
               <div className="text-left">
-                <span className="block text-xs text-gray-600 uppercase">WhatsApp</span>
-                <span className="block text-lg font-mono text-gray-900">+92 316 669 8983</span>
+                <span className="block text-xs text-gray-400 uppercase">WhatsApp</span>
+                <span className="block text-lg font-mono text-white">+92 316 669 8983</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
-                <Users className="h-5 w-5 text-blue-700" />
+              <div className="h-10 w-10 bg-yellow-500/20 rounded-full flex items-center justify-center">
+                <Users className="h-5 w-5 text-yellow-400" />
               </div>
               <div className="text-left">
-                <span className="block text-xs text-gray-600 uppercase">Contact Person</span>
-                <span className="block text-lg font-semibold text-gray-900">Bilawal Khan</span>
-                <span className="block text-xs text-blue-600">Co-Founder EthicX</span>
+                <span className="block text-xs text-gray-400 uppercase">Contact Person</span>
+                <span className="block text-lg font-semibold text-white">Bilawal Khan</span>
+                <span className="block text-xs text-yellow-400">Co-Founder EthicX</span>
               </div>
             </div>
           </div>
         </div>
-        <p className="mt-8 text-xs text-gray-500">© 2025 EIX Mining & On-Chain Infrastructure. All Rights Reserved.</p>
+        <p className="mt-8 text-xs text-gray-600">© 2025 EIX Mining & On-Chain Infrastructure. All Rights Reserved.</p>
       </footer>
     </div>
   );

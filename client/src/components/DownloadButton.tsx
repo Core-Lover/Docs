@@ -32,47 +32,31 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ targetRef }) => 
       const html2canvas = (await import('html2canvas')).default;
       const jsPDF = (await import('jspdf')).jsPDF;
 
-      // Render the element to canvas
+      // Render the element to canvas - 1:1 original dimensions
       const canvas = await html2canvas(element, {
         scale: 1,
         useCORS: true,
-        backgroundColor: '#ffffff',
+        backgroundColor: '#0f172a',
         windowWidth: element.offsetWidth,
         windowHeight: element.scrollHeight,
+        removeContainer: true
       });
 
-      // Get canvas data
+      // Get canvas data at 1:1 ratio
       const imageData = canvas.toDataURL('image/png');
       
-      // Create PDF
+      // Create PDF with dimensions that match canvas 1:1
       const pdfDoc = new jsPDF({
         orientation: 'portrait',
-        unit: 'mm',
-        format: 'a4',
+        unit: 'px',
+        format: [canvas.width, canvas.height],
       });
 
-      const pdfWidth = pdfDoc.internal.pageSize.getWidth();
-      const pdfHeight = pdfDoc.internal.pageSize.getHeight();
-      const imageWidth = pdfWidth;
-      const imageHeight = (canvas.height * imageWidth) / canvas.width;
+      const imageWidth = canvas.width;
+      const imageHeight = canvas.height;
 
-      let position = 0;
-      pdfDoc.addImage(imageData, 'PNG', 0, position, imageWidth, imageHeight);
-
-      position = imageHeight;
-      while (position > pdfHeight) {
-        pdfDoc.addPage();
-        position = imageHeight - pdfHeight * (Math.floor(position / pdfHeight) - 1);
-        pdfDoc.addImage(
-          imageData,
-          'PNG',
-          0,
-          -position + pdfHeight,
-          imageWidth,
-          imageHeight
-        );
-        position += pdfHeight;
-      }
+      // Add image to PDF at 1:1 ratio
+      pdfDoc.addImage(imageData, 'PNG', 0, 0, imageWidth, imageHeight);
 
       pdfDoc.save('EIX-Project-Overview.pdf');
 
