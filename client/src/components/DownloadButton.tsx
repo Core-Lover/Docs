@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Download, Loader2 } from 'lucide-react';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import { useToast } from '@/hooks/use-toast';
 
 interface DownloadButtonProps {
@@ -23,52 +21,60 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ targetRef }) => 
         description: "Please wait while we prepare your document.",
       });
 
+      // Dynamic import to avoid issues
+      const html2canvas = (await import('html2canvas')).default;
+      const jsPDF = (await import('jspdf')).jsPDF;
+
       const element = targetRef.current;
       
-      // Improve rendering quality
+      // Render canvas with improved settings
       const canvas = await html2canvas(element, {
-        scale: 2, // Higher resolution
-        useCORS: true, // Handle images
-        backgroundColor: '#0f172a', // Ensure dark background matching the theme
+        scale: 2,
+        useCORS: true,
+        backgroundColor: '#ffffff',
         logging: false,
-        windowWidth: element.scrollWidth,
+        windowWidth: 1000,
         windowHeight: element.scrollHeight,
-        ignoreElements: (element) => element.classList.contains('no-print')
+        allowTaint: true,
+        onclone: (clonedDocument) => {
+          // Ensure proper styling in cloned doc
+          const clonedElement = clonedDocument.getElementById('pdf-content');
+          if (clonedElement) {
+            clonedElement.style.boxShadow = 'none';
+          }
+        }
       });
 
       const imgData = canvas.toDataURL('image/png');
-      
-      // A4 dimensions in mm
       const pdf = new jsPDF({
         orientation: 'portrait',
         unit: 'mm',
         format: 'a4',
       });
 
-      const imgWidth = 210; // A4 width
-      const pageHeight = 297; // A4 height
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
-      let heightLeft = imgHeight;
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pageWidth;
+      const imgHeight = (canvas.height * pageWidth) / canvas.width;
+
       let position = 0;
 
-      // Add first page
+      // Add image in pages
       pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
+      let remainingHeight = imgHeight - pageHeight;
 
-      // Add subsequent pages if content overflows
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
+      while (remainingHeight > 0) {
+        position = remainingHeight * -1;
         pdf.addPage();
         pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
+        remainingHeight -= pageHeight;
       }
 
       pdf.save('EIX-Project-Overview.pdf');
 
       toast({
         title: "Success!",
-        description: "Document downloaded successfully.",
+        description: "PDF downloaded successfully.",
       });
 
     } catch (error) {
@@ -87,7 +93,7 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ targetRef }) => 
     <Button 
       onClick={handleDownload} 
       disabled={isGenerating}
-      className="fixed bottom-8 right-8 z-50 shadow-xl rounded-full h-14 w-14 md:w-auto md:h-12 md:px-6 md:rounded-lg animate-in slide-in-from-bottom-5 hover:scale-105 transition-transform bg-primary text-primary-foreground hover:bg-primary/90"
+      className="fixed bottom-8 right-8 z-50 shadow-lg rounded-full h-14 w-14 md:w-auto md:h-12 md:px-6 md:rounded-lg animate-in slide-in-from-bottom-5"
       size="lg"
     >
       {isGenerating ? (
