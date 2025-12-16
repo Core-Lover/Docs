@@ -31,21 +31,50 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({ targetRef }) => 
       const element = targetRef.current;
       const htmlContent = element.innerHTML;
 
-      // Create a complete HTML document with styles
+      // Get all stylesheets from the current document
+      const stylesheets = Array.from(document.styleSheets)
+        .map(sheet => {
+          try {
+            // Try to get the href for external stylesheets
+            if (sheet.href) {
+              return `<link rel="stylesheet" href="${sheet.href}">`;
+            }
+            // For inline styles, try to get the rules
+            if (sheet.cssRules) {
+              let css = '';
+              for (let i = 0; i < sheet.cssRules.length; i++) {
+                css += sheet.cssRules[i].cssText + '\n';
+              }
+              return `<style>${css}</style>`;
+            }
+          } catch (e) {
+            // CORS or other errors - skip
+          }
+          return '';
+        })
+        .filter(Boolean)
+        .join('\n');
+
+      // Create a complete HTML document with all styles
       const fullHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EIX-Project-Overview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+    body { font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background-color: hsl(210, 40%, 98%); }
+    .dark { color-scheme: dark; }
     @media print { body { margin: 0; padding: 0; } }
   </style>
+  ${stylesheets}
 </head>
-<body>
-  ${htmlContent}
+<body class="bg-slate-950 text-white">
+  <div style="max-width: 56rem; margin: 0 auto;">
+    ${htmlContent}
+  </div>
 </body>
 </html>`;
 
